@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "mistri-android"
+rootProject.name = "paindu-android"
 include(":app")

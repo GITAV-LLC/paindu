@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "org.gitav.mistri"
+    namespace = "org.gitav.paindu"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "org.gitav.mistri"
+        applicationId = "org.gitav.paindu"
         minSdk = 26
         targetSdk = 35
         versionCode = 1
@@ -34,9 +34,6 @@ android {
         compose = true
         buildConfig = true
     }
-
-    // The page scripts are shared with the Chrome extension: one source of truth.
-    sourceSets["main"].assets.srcDir("../../extension/content")
 
     lint {
         abortOnError = false

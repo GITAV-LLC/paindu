@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Build mistri's malware signature file from a list of SHA-256 hashes.
+"""Build paindu's malware signature file from a list of SHA-256 hashes.
 
 Input:  any text, CSV or ZIP export that contains SHA-256 hashes, such as the
         abuse.ch MalwareBazaar "full data dump" (CC0). Every 64-character hex
         string in it is treated as a hash.
 Output: the binary file the Android app downloads. Format (see HashDb.kt):
-        b"MISTRIH1", a big-endian 64-bit count, then that many big-endian
+        b"PAINDUH1", a big-endian 64-bit count, then that many big-endian
         64-bit values, each the first 8 bytes of one SHA-256, sorted.
 
 Usage:  build_signatures.py INPUT [INPUT ...] OUTPUT
@@ -47,7 +47,7 @@ def main(argv):
         print(f"Only {len(prefixes)} hashes found; refusing to publish a near-empty database.")
         return 1
     with open(output, "wb") as f:
-        f.write(b"MISTRIH1")
+        f.write(b"PAINDUH1")
         f.write(struct.pack(">q", len(prefixes)))
         for p in sorted(prefixes):
             f.write(struct.pack(">Q", p))
