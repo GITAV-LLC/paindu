@@ -49,7 +49,7 @@ paindu cannot stop, change or clean other apps, and does not try to. It shows wh
 Apart from loading the websites you visit:
 
 - **Block lists**, at most once a day while the app is open, and when you press **Update now**: public lists from easylist.to, raw.githubusercontent.com, pgl.yoyo.org and urlhaus.abuse.ch.
-- **Malware signatures**, only when you press the button in Device care: one file from `github.com` (GITAV's repository releases), built from the abuse.ch MalwareBazaar database.
+- **Malware signatures**, only when you press the button in Device care: one file from `github.com` (the paindu repository's releases), built from the abuse.ch MalwareBazaar database.
 
 These are ordinary file downloads. Those servers can see your IP address and the time of the request, as any web server can. paindu sends them nothing else. Files and apps are checked by comparing fingerprints on your phone; no file, fingerprint or app name is uploaded.
 
@@ -71,4 +71,4 @@ If this policy changes, the new version is published at this address with a new 
 
 ## Contact
 
-Questions or concerns: open an issue at https://github.com/GITAV-LLC/mistri/issues
+Questions or concerns: open an issue at https://github.com/GITAV-LLC/paindu/issues

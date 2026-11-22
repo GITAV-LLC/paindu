@@ -34,7 +34,7 @@ jobs:
           curl --fail --silent --show-error --location --max-time 600 \
             -o export.dat "${EXPORT_URL//\{key\}/$AUTH_KEY}"
       - name: Build the signature file
-        run: python3 paindu/android/tools/build_signatures.py export.dat malware-sha256.bin
+        run: python3 android/tools/build_signatures.py export.dat malware-sha256.bin
       - name: Publish
         env:
           GH_TOKEN: ${{ github.token }}

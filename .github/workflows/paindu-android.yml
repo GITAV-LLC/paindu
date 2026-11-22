@@ -5,11 +5,13 @@ name: paindu for Android
 on:
   push:
     paths:
-      - "paindu/**"
+      - "android/**"
+      - "shield/**"
       - ".github/workflows/paindu-android.yml"
   pull_request:
     paths:
-      - "paindu/**"
+      - "android/**"
+      - "shield/**"
       - ".github/workflows/paindu-android.yml"
 
 permissions:
@@ -31,22 +33,22 @@ jobs:
           import hashlib
           open("hashes.txt", "w").write("\n".join(hashlib.sha256(str(i).encode()).hexdigest() for i in range(1200)))
           PY
-          python3 paindu/android/tools/build_signatures.py hashes.txt signatures.bin
+          python3 android/tools/build_signatures.py hashes.txt signatures.bin
           test "$(stat -c %s signatures.bin)" -eq $((16 + 1200 * 8))
       - name: Unit tests, lint and debug build
-        working-directory: paindu/android
+        working-directory: android
         run: tools/ci_gradle.sh testDebugUnitTest assembleDebug lintDebug
       - uses: actions/upload-artifact@v4
         with:
           name: paindu-android-debug
-          path: paindu/android/app/build/outputs/apk/debug/*.apk
+          path: android/app/build/outputs/apk/debug/*.apk
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: android-reports
           path: |
-            paindu/android/app/build/reports/
-            paindu/android/gradle-*.log
+            android/app/build/reports/
+            android/gradle-*.log
           if-no-files-found: ignore
 
   # Starts the real app on an Android emulator and checks that Shield works inside a real WebView.
@@ -72,12 +74,12 @@ jobs:
           target: google_apis
           profile: pixel_6
           disable-animations: true
-          working-directory: paindu/android
+          working-directory: android
           script: tools/ci_gradle.sh connectedDebugAndroidTest
       - name: Print the recorded screens
         if: always()
         run: |
-          find paindu/android/app/build/outputs -name '*.jpg' | sort | while read -r f; do
+          find android/app/build/outputs -name '*.jpg' | sort | while read -r f; do
             echo "SHOT-BEGIN $(basename "$f")"
             base64 -w 3000 "$f"
             echo "SHOT-END"
@@ -87,7 +89,7 @@ jobs:
         with:
           name: android-device-test-reports
           path: |
-            paindu/android/app/build/reports/androidTests/
-            paindu/android/app/build/outputs/connected_android_test_additional_output/
-            paindu/android/gradle-*.log
+            android/app/build/reports/androidTests/
+            android/app/build/outputs/connected_android_test_additional_output/
+            android/gradle-*.log
           if-no-files-found: ignore

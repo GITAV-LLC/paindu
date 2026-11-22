@@ -70,8 +70,8 @@ private val CREDITS = listOf(
     Credit("Hypatia (Divested Computing)", "AGPLv3, design reference only", "Showed that hash-based scanning works on a phone", "https://github.com/Divested-Mobile/Hypatia"),
 )
 
-private const val PRIVACY_URL = "https://github.com/GITAV-LLC/mistri/blob/main/paindu/PRIVACY.md"
-private const val SOURCE_URL = "https://github.com/GITAV-LLC/mistri/tree/main/paindu"
+private const val PRIVACY_URL = "https://github.com/GITAV-LLC/paindu/blob/main/PRIVACY.md"
+private const val SOURCE_URL = "https://github.com/GITAV-LLC/paindu"
 
 private val TABS = listOf("Shield", "Browsing", "Reading", "Privacy", "About")
 

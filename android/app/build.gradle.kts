@@ -35,6 +35,9 @@ android {
         buildConfig = true
     }
 
+    // Shield's page scripts are shared with paindu for desktop: one copy, in shield/page.
+    sourceSets["main"].assets.srcDir("../../shield/page")
+
     lint {
         abortOnError = false
     }

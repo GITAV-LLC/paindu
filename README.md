@@ -4,12 +4,12 @@
 
 **paindu** (پینڈو) is a private, careful web browser. A *paindu* is someone from the village; GITAV stands for *Gahandaran – It Takes A Village*. PB is Punjab, and it is also paindu browser.
 
-paindu is a separate product from [mistri](../README.md), GITAV's Windows repair tool and Chrome extension. It reuses mistri Shield's open-source blocking engine and nothing else.
+paindu is a separate product from [mistri](https://github.com/GITAV-LLC/mistri), GITAV's Windows repair tool and Chrome extension. It reuses mistri Shield's open-source blocking approach and nothing else.
 
 | Platform | Status |
 |---|---|
 | Android | Prototype in [`android/`](android/). Builds in CI and passes its tests on an emulator. Not yet tested on a phone or released |
-| Windows | Planned: a Chromium-based browser |
+| Desktop | Planned: a Chromium-based browser, in `desktop/` (GITAV's patches and build scripts; Chromium itself is downloaded at build time) |
 
 ## Brand
 
@@ -92,7 +92,7 @@ paindu itself is deliberately small: tabs, bookmarks, downloads and Shield. Ever
 Needs JDK 17 and the Android SDK (platform 35).
 
 ```
-cd paindu/android
+cd android
 ./gradlew testDebugUnitTest assembleDebug
 ```
 
@@ -118,6 +118,7 @@ The app downloads one file, `malware-sha256.bin`, from the repository's `signatu
 
 ```
 branding/                     make_icons.py, icon PNGs
+shield/page/                  page scripts shared by every platform: cookie reject, pop-up guard, ad-box CSS
 android/app/src/main/
   kotlin/org/gitav/paindu/
     shield/                   FilterLists (list parser), ShieldEngine
@@ -125,7 +126,7 @@ android/app/src/main/
     care/                     Care (device checks), HashDb, Signatures
     plugins/                  the catalogue of built-in plugins
     ui/                       Compose screens, theme, ⓘ help texts
-  assets/                     page scripts (cookie reject, pop-up guard, ad-box CSS), Readability.js
+  assets/                     starter block lists, Readability.js
 android/tools/                build_signatures.py, ci_gradle.sh
 PLUGINS.md                    draft plugin protocol
 PRIVACY.md
@@ -137,4 +138,4 @@ Chromium / Android System WebView (BSD), Jetpack Compose, Material 3 and Android
 
 ## License
 
-MIT © GITAV LLC
+MIT © GITAV LLC. See [LICENSE](LICENSE).

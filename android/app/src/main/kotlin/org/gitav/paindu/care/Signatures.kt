@@ -80,6 +80,6 @@ class Signatures(context: Context, private val settings: Settings) {
 
     companion object {
         const val SOURCE =
-            "https://github.com/GITAV-LLC/mistri/releases/download/signatures/malware-sha256.bin"
+            "https://github.com/GITAV-LLC/paindu/releases/download/signatures/malware-sha256.bin"
     }
 }

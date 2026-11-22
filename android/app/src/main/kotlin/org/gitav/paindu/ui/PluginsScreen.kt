@@ -16,7 +16,7 @@ import org.gitav.paindu.plugins.Plugin
 import org.gitav.paindu.plugins.PluginStatus
 import org.gitav.paindu.plugins.Plugins
 
-private const val PROTOCOL_URL = "https://github.com/GITAV-LLC/mistri/blob/main/paindu/PLUGINS.md"
+private const val PROTOCOL_URL = "https://github.com/GITAV-LLC/paindu/blob/main/PLUGINS.md"
 
 /**
  * Plugins: paindu itself stays small, and this is where the user adds what they want.
