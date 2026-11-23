@@ -3,10 +3,9 @@
 #
 # Needs one repository secret:
 #   ABUSE_CH_AUTH_KEY   a free Auth-Key from https://auth.abuse.ch/
-# And optionally one repository variable:
-#   MALWAREBAZAAR_EXPORT_URL   the full SHA-256 export address shown on
-#                              https://bazaar.abuse.ch/export/ after signing in,
-#                              with {key} where the Auth-Key goes.
+# Optional repository variable, only if abuse.ch ever moves the export:
+#   MALWAREBAZAAR_EXPORT_URL   the "SHA256 hashes: Full data dump" address from
+#                              https://bazaar.abuse.ch/export/, with {key} where the Auth-Key goes.
 name: Malware signatures
 
 on:
@@ -25,7 +24,7 @@ jobs:
       - name: Download the MalwareBazaar hash export
         env:
           AUTH_KEY: ${{ secrets.ABUSE_CH_AUTH_KEY }}
-          EXPORT_URL: ${{ vars.MALWAREBAZAAR_EXPORT_URL || 'https://mb-api.abuse.ch/v2/files/exports/{key}/full.csv.zip' }}
+          EXPORT_URL: ${{ vars.MALWAREBAZAAR_EXPORT_URL || 'https://mb-api.abuse.ch/v2/files/exports/{key}/sha256_full.txt.zip' }}
         run: |
           if [ -z "$AUTH_KEY" ]; then
             echo "::error::Add the ABUSE_CH_AUTH_KEY secret (free from https://auth.abuse.ch/) to build signatures."

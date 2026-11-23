@@ -104,8 +104,9 @@ The app downloads one file, `malware-sha256.bin`, from the repository's `signatu
 
 1. Get an Auth-Key at https://auth.abuse.ch/.
 2. Add it to the repository as the secret `ABUSE_CH_AUTH_KEY`.
-3. Sign in at https://bazaar.abuse.ch/export/, copy the address of the full SHA-256 export, replace your key in it with `{key}`, and save it as the repository variable `MALWAREBAZAAR_EXPORT_URL`.
-4. Run the **Malware signatures** workflow once from the Actions tab.
+3. Run the **Malware signatures** workflow once from the Actions tab.
+
+No repository variable is needed: the workflow already knows the address of MalwareBazaar's "SHA256 hashes: Full data dump" export.
 
 ### Before a Play Store release
 
